@@ -19,10 +19,14 @@ HEALTHCHECK CMD microhc --url http://127.0.0.1:8080/health
 
 - In `docker-compose.yaml`
 
+_assuming that microhc binary is present under tools directory_
+
 ```yaml
 services:
   my-service:
     image: my-oci-reg/my-image:v1.0.0
+    volumes:
+      - ./tools/microhc:/microhc:ro   # this is how you mount this tool into root of filesystem
     healthcheck:
-      test: microhc --url http://127.0.0.1:8080/health
+      test: ["CMD", "/microhc", "--url", "http://localhost:9113/metrics", "--silent"]
 ```
