@@ -22,3 +22,10 @@ updates:
     directory: /
     schedule:
       interval: weekly
+    groups:
+      codeql-actions:
+        patterns:
+          - github/codeql-action*
+      rkosegi-workflows:
+        patterns:
+          - rkosegi/github-workflows*
